@@ -1,3 +1,5 @@
+use std::cmp::PartialOrd;
+
 pub fn mean<T>(list: &[T]) -> T where T: PartialOrd {
     list.iter().sum() / list.len()
 }
