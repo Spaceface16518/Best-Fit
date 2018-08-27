@@ -19,3 +19,14 @@ mod bf {
         y - slope * x
     }
 }
+
+#[cfg(test)]
+mod test_bf {
+    use super::*;
+
+    #[test]
+    fn test_mean() {
+        let a = [1, 2, 3, 4, 5];
+        assert_eq!(bf::mean(a), 3);
+    }
+}
