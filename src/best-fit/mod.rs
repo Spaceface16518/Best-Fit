@@ -13,3 +13,7 @@ pub fn bf_slope<T>(x: &[T], y: &[T], mean_x: T, mean_y: T) -> T where T: Partial
         acc + (cc * cc)
     })
 }
+
+pub fn y_intercept<T>(mean_x: T, mean_y: T, slope: T) -> T where T: PartialOrd {
+    mean_y - slope * mean_x
+}
