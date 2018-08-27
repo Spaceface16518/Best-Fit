@@ -15,7 +15,7 @@ mod bf {
         })
     }
 
-    pub fn y_intercept<T>(mean_x: T, mean_y: T, slope: T) -> T where T: PartialOrd {
-        mean_y - slope * mean_x
+    pub fn y_intercept<T>(x: T, y: T, slope: T) -> T where T: PartialOrd {
+        y - slope * x
     }
 }
