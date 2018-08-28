@@ -8,10 +8,11 @@ pub fn bf_slope<T>(x: &[T], y: &[T]) -> T where T: PartialOrd {
     let nums: &[(T, T)] = x.iter().zip(y.iter());
     let mean_x: T = mean(x);
     let mean_y: T = mean(y);
+    // Slope of best fit formula
     nums.iter().fold(0, |acc: T, c: (T, T)| -> T {
         acc + (c.1 - mean_x) * (c.2 - mean_y)
-    }) / nums.iter().fold(0, |acc: T, c: (T, T)| -> T {
-        acc + util::pow(c.1 - mean_x, 2)
+    }) / x.iter().fold(0, |acc: T, c: T| -> T {
+        acc + util::pow(c - mean_x, 2)
     })
 }
 
