@@ -17,14 +17,3 @@ pub fn bf_slope<T>(x: &[T], y: &[T], mean_x: T, mean_y: T) -> T where T: Partial
 pub fn y_intercept<T>(x: T, y: T, slope: T) -> T where T: PartialOrd {
     y - slope * x
 }
-
-#[cfg(test)]
-mod test_bf {
-    use super::*;
-
-    #[test]
-    fn test_mean() {
-        let a = [1, 2, 3, 4, 5];
-        assert_eq!(bf::mean(a), 3);
-    }
-}
