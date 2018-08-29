@@ -4,6 +4,7 @@ version = "0.1.0"
 authors = ["Spaceface16518 <33424649+Spaceface16518@users.noreply.github.com>"]
 
 [dependencies]
+num = "0.2.0"
 
 [profile.dev]
 opt-level = 0

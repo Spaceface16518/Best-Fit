@@ -1,34 +1,29 @@
+extern crate num;
+
+use self::num::Num;
 use std::cmp::PartialOrd;
 
-pub fn mean<T>(list: &[T]) -> T where T: PartialOrd {
-    list.iter().sum() / list.len()
-}
+pub mod util;
 
-pub fn bf_slope<T>(x: &[T], y: &[T]) -> T where T: PartialOrd {
-    let nums: &[(T, T)] = x.iter().zip(y.iter());
-    let mean_x: T = mean(x);
-    let mean_y: T = mean(y);
+pub fn bf_slope<T>(x: &[T], y: &[T]) -> T where T: Num {
+    let nums: &[(T, T)] = {
+        let mut n: Vec<(T, T)> = Vec::new();
+        for (i, cp) in x.iter().zip(y.iter()).enumerate() {
+            let val = (*cp.0, *cp.1);
+            n.push(val);
+        }
+        &n[..]
+    };
+    let mean_x: T = util::mean(x);
+    let mean_y: T = util::mean(y);
     // Slope of best fit formula
     nums.iter().fold(0, |acc: T, c: (T, T)| -> T {
-        acc + (c.1 - mean_x) * (c.2 - mean_y)
+        acc + (c.0 - mean_x) * (c.1 - mean_y)
     }) / x.iter().fold(0, |acc: T, c: T| -> T {
         acc + util::pow(c - mean_x, 2)
     })
 }
 
-pub fn y_intercept<T>(x: T, y: T, slope: T) -> T where T: PartialOrd {
+pub fn y_intercept<T>(x: T, y: T, slope: T) -> T where T: Num {
     y - slope * x
-}
-
-pub mod util {
-    pub fn pow<T>(base: T, exponent: T) -> T where T: PartialOrd {
-        if exponent == 0 {
-            return 1 as T;
-        } else if base & 1 == 1 {
-            return base * pow(base, exponent - { 1 as T });
-        } else {
-            let p = pow(base, exponent / { 2 as T });
-            return p * p;
-        }
-    }
 }
