@@ -18,7 +18,7 @@ fn exper_pow<T>(mut base: T, mut exponent: usize) -> T where T: Clone + num::Num
         return T::one();
     }
     if exponent & 1 == 1 {
-        base = base * base.clone();
+        base = base.clone() * base;
         exponent >>= 1;
     }
     if exponent == 1 {
