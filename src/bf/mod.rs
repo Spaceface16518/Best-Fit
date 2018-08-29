@@ -1,7 +1,6 @@
 extern crate num;
 
 use self::num::Num;
-use std::cmp::PartialOrd;
 
 pub mod util;
 
