@@ -13,7 +13,11 @@ pub fn pow<T>(base: T, exponent: usize) -> T where T: num::Num + ops::Mul<T, Out
     }
 }
 
-fn exper_pow<T>(mut base: T, mut exponent: usize) -> T where T: Clone + num::Num + ops::Mul<T, Output=T> {
+fn exper_pow<T>(base: T, exponent: usize) -> T where T: Clone + num::Num + ops::Mul<T, Output=T> {
+    let mut base: T = base.clone();
+    let mut exponent: usize = exponent.clone();
+
+    // Base and special cases
     if exponent == 0 {
         return T::one();
     }
@@ -25,7 +29,7 @@ fn exper_pow<T>(mut base: T, mut exponent: usize) -> T where T: Clone + num::Num
         return base;
     }
 
-    let mut acc = base.clone();
+    let mut acc: T = base.clone();
 
     while exponent > 1 {
         exponent >>= 1;
