@@ -4,11 +4,17 @@ use super::num;
 pub fn mean<T>(list: &[T]) -> T
     where T: num::Num + ops::Add<T, Output=T> + From<usize> + Clone {
     let sum: T = {
-        let mut sum: T = T::zero();
+        // Perhaps replace with iterator? Though might be slower/inefficient
+        let mut s_sum: T = T::zero();
         for &i in list.iter() {
-            sum = sum + i;
+            s_sum = s_sum + i;
         }
-        sum
+        s_sum
     };
-    sum / list.len()
+    sum / T::from(list.len())
+}
+
+pub fn f_mean(list: &[f64]) -> f64 {
+    let sum: f64 = list.iter().sum();
+    return sum / list.len() as f64;
 }
