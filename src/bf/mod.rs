@@ -7,7 +7,7 @@ pub mod mean;
 pub mod pow;
 
 pub fn bf_slope<T>(x: &[T], y: &[T]) -> T
-                   where T: num::Num + ops::Mul<T, Output=T> + ops::Add<T, Output=T> + ops::Sub<T, Output=T> + Clone + From<usize> + iter::Sum {
+                   where T: num::Num + ops::Mul<T, Output=T> + ops::Add<T, Output=T> + ops::Sub<T, Output=T> + Clone + From<f64> + iter::Sum {
     let nums = {
         let mut n: Vec<(T, T)> = Vec::new();
         for (cp_x, cp_y) in x.iter().zip(y.iter()) {
