@@ -1,9 +1,9 @@
 mod bf;
 
 fn main() {
-    let x: [i32; 10] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    let y: [i32; 10] = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
-    let slope: i32 = bf::bf_slope(&x, &y);
-    let y_intercept: i32 = bf::y_intercept(bf::mean::mean(&x), bf::mean::mean(&y), slope);
-    println!("x: {:?} y: {:?} slope: {} y-intercept: {}", &x, &y, slope, y_intercept);
+    let weight = [9.8, 7.35, 4.9, 2.45, 19.6, 17.15, 14.7, 12.25];
+    let avg_k = [2.5, 2.3, 1.7, 1.2, 4.8, 4.4, 3.9, 2.7];
+    let slope = bf::f_bf_slope(&weight, &avg_k);
+    let y_intercept = bf::y_intercept(bf::mean::f_mean(&weight[..]), bf::mean::f_mean(&avg_k), slope);
+    println!("weight: {:?} avg_k: {:?} slope: {} y-intercept: {}", &weight, &avg_k, slope, y_intercept);
 }
