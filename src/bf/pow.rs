@@ -2,7 +2,7 @@ extern crate num;
 
 use std::ops;
 
-pub fn pow<T>(base: T, exponent: usize) -> T where T: num::Num + ops::Mul<T, Output=T> + ops::BitAnd<T, Output=T> {
+pub fn pow<T>(base: T, exponent: usize) -> T where T: num::Num + ops::Mul<T, Output=T> + ops::BitAnd<T, Output=T> + Copy {
     if exponent == 0 {
         T::one()
     } else if base & T::one() == T::one() {
@@ -13,7 +13,7 @@ pub fn pow<T>(base: T, exponent: usize) -> T where T: num::Num + ops::Mul<T, Out
     }
 }
 
-fn exper_pow<T>(base: T, exponent: usize) -> T where T: Clone + num::Num + ops::Mul<T, Output=T> {
+pub fn exper_pow<T>(base: T, exponent: usize) -> T where T: Clone + num::Num + ops::Mul<T, Output=T> {
     let mut base: T = base.clone();
     let mut exponent: usize = exponent.clone();
 
