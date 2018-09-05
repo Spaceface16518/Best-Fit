@@ -21,7 +21,7 @@ pub fn exper_pow<T>(base: T, exponent: usize) -> T where T: Clone + num::Num + o
     if exponent == 0 {
         return T::one();
     }
-    if exponent & 1 == 1 {
+    if exponent & 1 == 0 {
         base = base.clone() * base;
         exponent >>= 1;
     }
