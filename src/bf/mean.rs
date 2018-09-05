@@ -6,8 +6,8 @@ pub fn mean<T>(list: &[T]) -> T
     let sum: T = {
         // Perhaps replace with iterator? Though might be slower/inefficient
         let mut s_sum: T = T::zero();
-        for &i in list.iter() {
-            s_sum = s_sum + i;
+        for i in 0..list.len() {
+            s_sum = s_sum + list[i].clone();
         }
         s_sum
     };
