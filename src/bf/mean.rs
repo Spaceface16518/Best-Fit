@@ -2,7 +2,7 @@ use std::ops;
 use super::num;
 
 pub fn mean<T>(list: &[T]) -> T
-    where T: num::Num + ops::Add<T, Output=T> + From<usize> + Clone {
+               where T: num::Num + ops::Add<T, Output=T> + From<usize> + Clone {
     let sum: T = {
         // Perhaps replace with iterator? Though might be slower/inefficient
         let mut s_sum: T = T::zero();
