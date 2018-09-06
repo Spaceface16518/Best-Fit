@@ -22,26 +22,7 @@ pub fn bf_slope<T>(x: &[T], y: &[T]) -> T
     nums.iter().fold(T::zero(), |acc, (x_i, y_i)| -> T {
         acc + (x_i.clone() - mean_x.clone()) * (y_i.clone() - mean_y.clone())
     }) / x.iter().fold(T::zero(), |acc, x_i| -> T {
-        acc + pow::exper_pow(x_i.clone() - mean_x.clone(), 2)
-    })
-}
-
-pub fn f_bf_slope(x: &[f64], y: &[f64]) -> f64 {
-    let nums = {
-        let mut n = Vec::new();
-        for (&x, &y) in x.iter().zip(y.iter()) {
-            let val: (f64, f64) = (x, y);
-            n.push(val);
-        };
-        &n.to_owned()[..]
-    };
-    let mean_x: f64 = mean::f_mean(x);
-    let mean_y: f64 = mean::f_mean(y);
-    // Slope of best fit formula
-    nums.iter().fold(0f64, |acc: f64, c: &(f64, f64)| -> f64 {
-        acc + (c.0 - mean_x) * (c.1 - mean_y)
-    }) / x.iter().fold(0f64, |acc: f64, c: &f64| -> f64 {
-        acc + pow::exper_pow(c.clone() - mean_x, 2)
+        acc + pow::pow(x_i.clone() - mean_x.clone(), 2)
     })
 }
 

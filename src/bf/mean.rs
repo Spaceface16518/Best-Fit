@@ -13,8 +13,3 @@ pub fn mean<T>(list: &[T]) -> T
     };
     sum / T::from(list.len() as f64)
 }
-
-pub fn f_mean(list: &[f64]) -> f64 {
-    let sum: f64 = list.iter().sum();
-    return sum / list.len() as f64;
-}
