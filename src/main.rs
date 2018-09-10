@@ -1,5 +1,3 @@
-extern crate num;
-
 mod bf;
 
 fn main() {
